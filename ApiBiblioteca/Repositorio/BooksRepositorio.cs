@@ -62,13 +62,19 @@ namespace ApiBiblioteca.Repositorio
             Books book = await _db.Books.FindAsync(Id);
             return _mapper.Map<BooksDto>(book);
         }
+
         public async Task<BooksDto> GetBooksAuthById(FindBook findbook)
         {
+            /*
             var books = await (from auth in  _db.Authors
                                            join book in _db.Books on auth.idBook equals book.Id
-                                           where auth.id == findbook.idAuth || (book.publishDate>=findbook.fincio && book.publishDate<=findbook.ffin
+                                           where auth.id == findbook.idAuth || (book.publishDate>=findbook.finicio && book.publishDate<=findbook.ffin
                                            )
                                select book).FirstOrDefaultAsync();
+*/
+
+            var books = await (from book in  _db.Books
+                                           where book.publishDate>=findbook.finicio && book.publishDate<=findbook.ffin select book).FirstOrDefaultAsync();
 
             return _mapper.Map<BooksDto>(books);
         }

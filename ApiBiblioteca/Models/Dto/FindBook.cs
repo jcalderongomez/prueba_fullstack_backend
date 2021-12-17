@@ -8,7 +8,7 @@ namespace ApiBiblioteca.Models.Dto
     public class FindBook
     {
         public int idAuth { get; set; }
-        public DateTime fincio { get; set; }
+        public DateTime finicio { get; set; }
         public DateTime ffin { get; set; }
     }
 }
